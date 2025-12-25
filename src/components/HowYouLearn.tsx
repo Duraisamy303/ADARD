@@ -1,32 +1,32 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { MapPin, Code, Wrench, Lightbulb } from 'lucide-react'
+import { MapPin, Code, Wrench, Lightbulb, ArrowRight } from 'lucide-react'
 
 const steps = [
   {
-    number: '1️⃣',
+    number: '01',
     icon: MapPin,
     title: 'Choose Your Path',
     content: 'Start your journey your way — use your own idea, get one from our experts, or customize a real-world concept. We guide you step by step.',
     gradient: 'from-blue-500 to-cyan-500'
   },
   {
-    number: '2️⃣',
+    number: '02',
     icon: Code,
     title: 'Build Real Projects',
     content: 'Create real apps like social media platforms, e-commerce stores, and management systems that make your profile stand out.',
     gradient: 'from-purple-500 to-pink-500'
   },
   {
-    number: '3️⃣',
+    number: '03',
     icon: Wrench,
     title: 'Learn by Doing',
     content: 'Build, test, and improve — understand every concept through real hands-on experience.',
     gradient: 'from-green-500 to-teal-500'
   },
   {
-    number: '4️⃣',
+    number: '04',
     icon: Lightbulb,
     title: 'Get Project + Core Knowledge',
     content: 'Turn your ideas into real-world solutions with logic, creativity, and confidence to lead your own vision.',
@@ -36,93 +36,79 @@ const steps = [
 
 export default function HowYouLearn() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-10 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+    <section className="py-32 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-3 mb-4">
-            <span className="text-4xl">🚀</span>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="text-5xl">🚀</span>
+            <h2 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               How You'll Learn
             </h2>
           </div>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             A practical, project-based learning journey
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="space-y-24">
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="group relative"
+              className={`flex flex-col lg:flex-row items-center gap-16 ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
             >
-              <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-3xl hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700">
-                {/* Step number and icon */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="text-4xl font-bold">
+              <div className="flex-1 text-center lg:text-left">
+                <div className="flex items-center justify-center lg:justify-start gap-4 mb-6">
+                  <span className={`text-6xl font-bold bg-gradient-to-r ${step.gradient} bg-clip-text text-transparent`}>
                     {step.number}
-                  </div>
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.gradient} p-4 group-hover:scale-110 transition-transform shadow-lg`}>
+                  </span>
+                  <motion.div 
+                    className={`w-16 h-16 rounded-full bg-gradient-to-r ${step.gradient} p-4`}
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                  >
                     <step.icon className="w-full h-full text-white" />
-                  </div>
+                  </motion.div>
                 </div>
-
-                {/* Title */}
-                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                
+                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                   {step.title}
                 </h3>
-
-                {/* Content */}
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                
+                <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
                   {step.content}
                 </p>
 
-                {/* Progress line for desktop */}
-                {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-6 w-12 h-0.5 bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-600"></div>
-                )}
+                <motion.div 
+                  className={`inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-transparent hover:bg-gradient-to-r hover:bg-clip-text hover:${step.gradient} transition-all cursor-pointer`}
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="text-lg font-medium">Learn More</span>
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </motion.div>
+              </div>
 
-                {/* Hover gradient overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-r ${step.gradient} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity`}></div>
+              <div className="flex-1 flex justify-center">
+                <motion.div 
+                  className={`w-80 h-80 rounded-full bg-gradient-to-r ${step.gradient} p-1`}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
+                    <step.icon className="w-32 h-32 text-gray-400 dark:text-gray-600" />
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-8 rounded-3xl text-white max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Transform Your Learning Experience?
-            </h3>
-            <p className="text-lg mb-6 opacity-90">
-              Join thousands of students who've built amazing projects and landed their dream jobs
-            </p>
-            <button className="bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-lg">
-              Start Your Journey Today
-            </button>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
