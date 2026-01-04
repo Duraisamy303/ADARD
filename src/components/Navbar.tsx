@@ -50,7 +50,7 @@ export default function Navbar({ darkMode, toggleDarkMode }: NavbarProps) {
               {[
                 "Home",
                 "Services",
-                "Projects",
+                // "Projects",
                 "Help Desk",
                 "About",
                 "Contact",

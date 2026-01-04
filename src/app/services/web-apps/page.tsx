@@ -94,7 +94,7 @@ export default function WebAppsPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              The AshTech Web App Advantage
+              The AdardTech Web App Advantage
             </h2>
           </motion.div>
 

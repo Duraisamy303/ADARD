@@ -22,7 +22,7 @@ const services = [
   {
     icon: Globe,
     title: 'Website',
-    description: 'At AshTech, we build modern, responsive websites that reflect your ideas with a professional edge. Our sites are designed to load fast, look great on every device, and deliver a smooth user experience.',
+    description: 'At AdardTech, we build modern, responsive websites that reflect your ideas with a professional edge. Our sites are designed to load fast, look great on every device, and deliver a smooth user experience.',
     link: '/services/websites',
     gradient: 'from-green-500 to-teal-500'
   },

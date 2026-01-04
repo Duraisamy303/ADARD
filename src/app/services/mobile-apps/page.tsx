@@ -107,7 +107,7 @@ export default function MobileAppsPage() {
               The Mobile Experience: Crafted for Innovation
             </h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Whether your project is for Android, iOS, or both, AshTech delivers high-quality, reliable mobile apps that stand out during project reviews. We focus on clean, modern interfaces and flawless functionality that make your app impressive and easy to present.
+              Whether your project is for Android, iOS, or both, AdardTech delivers high-quality, reliable mobile apps that stand out during project reviews. We focus on clean, modern interfaces and flawless functionality that make your app impressive and easy to present.
             </p>
           </motion.div>
         </div>

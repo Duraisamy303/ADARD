@@ -85,7 +85,7 @@ export default function WebsitesPage() {
               Build Modern, Responsive Websites that Reflect Your Ideas with Confidence
             </h2>
             <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
-              At AshTech, we build responsive websites that look great on every device and load fast. Whether it's for a final-year project or a business concept, our sites deliver a smooth user experience and help your project stand out online.
+              At AdardTech, we build responsive websites that look great on every device and load fast. Whether it's for a final-year project or a business concept, our sites deliver a smooth user experience and help your project stand out online.
             </p>
             <button className="bg-gradient-to-r from-green-500 to-teal-500 px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-2xl">
               View Our Portfolio

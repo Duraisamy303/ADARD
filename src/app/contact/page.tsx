@@ -7,7 +7,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: 'Email Us',
-    info: 'support@ashtech.com',
+    info: 'support@adardTech.com',
     description: 'Send us an email anytime',
     gradient: 'from-blue-500 to-cyan-500'
   },

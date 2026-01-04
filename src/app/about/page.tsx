@@ -52,13 +52,13 @@ const values = [
   {
     icon: Shield,
     title: 'Reliability',
-    description: 'Projects need consistent support to succeed. Hash Tech ensures timely guidance, practical help, and continued assistance so students can complete their projects smoothly and confidently.',
+    description: 'Projects need consistent support to succeed. Adard Tech ensures timely guidance, practical help, and continued assistance so students can complete their projects smoothly and confidently.',
     gradient: 'from-green-500 to-emerald-500'
   },
   {
     icon: Zap,
     title: 'Innovation',
-    description: 'Learning and projects should be engaging and up-to-date. Hash Tech provides practical, hands-on project solutions using the latest technologies, helping students build impressive, modern projects.',
+    description: 'Learning and projects should be engaging and up-to-date. Adard Tech provides practical, hands-on project solutions using the latest technologies, helping students build impressive, modern projects.',
     gradient: 'from-purple-500 to-violet-500'
   }
 ]
@@ -75,7 +75,7 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              About <span className="text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text">AshTech</span>
+              About <span className="text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text">ADARD TECH</span>
             </h1>
             <p className="text-xl md:text-2xl max-w-4xl mx-auto leading-relaxed opacity-90">
               Bridging the gap between academic learning and industry requirements through practical, real-world project experiences.

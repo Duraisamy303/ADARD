@@ -55,7 +55,7 @@ export default function ServicesPage() {
             >
               <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
                 <p>
-                  At AshTech, we empower final-year students to bring their academic projects to life with professional-grade quality and practical learning.
+                  At AdardTech, we empower final-year students to bring their academic projects to life with professional-grade quality and practical learning.
                 </p>
                 <p>
                   We specialize in creating modern websites, innovative web applications, and feature-rich mobile apps — all tailored to meet your project requirements. Our solutions are affordable, scalable, and designed to grow with your vision.
@@ -111,7 +111,7 @@ export default function ServicesPage() {
               More Than Just a Project
             </h3>
             <p className="text-lg opacity-90 max-w-4xl mx-auto">
-              With AshTech, you don't just submit a project — you gain hands-on experience, technical confidence, and career-focused knowledge that supports your long-term growth.
+              With AdardTech, you don't just submit a project — you gain hands-on experience, technical confidence, and career-focused knowledge that supports your long-term growth.
             </p>
           </motion.div>
         </div>

@@ -81,7 +81,7 @@ export default function AISolutionsPage() {
               Integrate Cutting-Edge AI into Your Project & Impress Your Graders
             </h2>
             <p className="text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed opacity-90">
-              AshTech brings Artificial Intelligence capabilities directly into your web and mobile development work. We transform standard projects into interactive experiences by integrating features like intelligent chatbots and smart assistants, providing a modern, engaging layer to your applications.
+            AdardTech brings Artificial Intelligence capabilities directly into your web and mobile development work. We transform standard projects into interactive experiences by integrating features like intelligent chatbots and smart assistants, providing a modern, engaging layer to your applications.
             </p>
             <button className="bg-gradient-to-r from-indigo-500 to-pink-500 px-8 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-2xl">
               Discuss My AI Idea
