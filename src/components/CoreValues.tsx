@@ -142,115 +142,290 @@ export default function CoreValues() {
               <motion.div
                 key={index}
                 className="group relative"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ 
+                  duration: 0.8, 
+                  delay: index * 0.2,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15
+                }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <motion.div
-                  className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 h-full relative overflow-hidden"
-                  animate={{
-                    scale: isHovered ? 1.05 : 1,
-                    y: isHovered ? -5 : 0
+                <motion.div 
+                  className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl rounded-3xl border border-white/20 p-6 h-full relative overflow-hidden"
+                  whileHover={{
+                    y: -20,
+                    rotateY: 12,
+                    rotateX: 8,
+                    scale: 1.05,
+                    boxShadow: `0 40px 80px -20px ${value.color}50`
                   }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  animate={{
+                    borderColor: isHovered ? `${value.color}60` : 'rgba(255,255,255,0.2)'
+                  }}
+                  transition={{ type: "spring", stiffness: 150, damping: 15 }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  {/* Simple Gradient Overlay */}
+                  {/* Liquid Background */}
                   <motion.div
                     className="absolute inset-0 rounded-3xl"
                     style={{
-                      background: `linear-gradient(135deg, ${value.color}15 0%, transparent 70%)`
+                      background: `conic-gradient(from ${isHovered ? '360deg' : '0deg'}, ${value.color}40, transparent, ${value.color}20, transparent, ${value.color}40)`,
+                      filter: 'blur(20px)'
                     }}
                     animate={{
+                      rotate: isHovered ? [0, 360] : 0,
+                      scale: isHovered ? [1, 1.3, 1] : 1,
+                      opacity: isHovered ? [0.3, 0.8, 0.3] : 0.1
+                    }}
+                    transition={{
+                      rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+                      scale: { duration: 3, repeat: Infinity },
+                      opacity: { duration: 2, repeat: Infinity }
+                    }}
+                  />
+
+                  {/* Electric Border */}
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl"
+                    style={{
+                      background: `linear-gradient(45deg, ${value.color}80, transparent, ${value.color}80, transparent, ${value.color}80)`,
+                      backgroundSize: '400% 400%',
+                      padding: '2px'
+                    }}
+                    animate={{
+                      backgroundPosition: isHovered ? ['0% 0%', '100% 100%', '0% 0%'] : '0% 0%',
                       opacity: isHovered ? 1 : 0
                     }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  {/* Border Glow */}
-                  <motion.div
-                    className="absolute inset-0 rounded-3xl border"
-                    style={{ borderColor: value.color }}
-                    animate={{
-                      opacity: isHovered ? 0.6 : 0
+                    transition={{
+                      backgroundPosition: { duration: 2, repeat: Infinity },
+                      opacity: { duration: 0.3 }
                     }}
-                    transition={{ duration: 0.3 }}
-                  />
-
+                  >
+                    <div className="w-full h-full rounded-3xl bg-slate-900/90 backdrop-blur-xl" />
+                  </motion.div>
                   {/* Content */}
-                  <div className="relative z-10">
+                  <div className="relative z-20">
                     {/* Icon & Title Row */}
-                    <div className="flex items-start gap-6 mb-6">
+                    <div className="flex items-start gap-4 mb-4">
                       <motion.div
-                        className="relative flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg"
-                        style={{ backgroundColor: `${value.color}20` }}
-                        animate={{
-                          scale: isHovered ? 1.1 : 1
+                        className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center relative"
+                        style={{ backgroundColor: `${value.color}15` }}
+                        whileHover={{ 
+                          scale: 1.2,
+                          rotateY: 360,
+                          backgroundColor: `${value.color}25`
                         }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 10 }}
                       >
-                        <IconComponent 
-                          className="w-10 h-10" 
-                          style={{ color: value.color }}
-                        />
+                        {/* Multiple Pulsing Rings */}
+                        {[...Array(3)].map((_, i) => (
+                          <motion.div
+                            key={i}
+                            className="absolute inset-0 rounded-2xl border-2"
+                            style={{ borderColor: `${value.color}60` }}
+                            animate={{
+                              scale: isHovered ? [1, 1.5 + i * 0.3, 1] : 1,
+                              opacity: isHovered ? [0.8, 0, 0.8] : 0
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: i * 0.3
+                            }}
+                          />
+                        ))}
                         
-
+                        <motion.div
+                          animate={{
+                            rotateY: isHovered ? [0, 180, 360] : 0,
+                            scale: isHovered ? [1, 1.3, 1] : 1
+                          }}
+                          transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
+                        >
+                          <IconComponent 
+                            className="w-8 h-8" 
+                            style={{ color: value.color }}
+                          />
+                        </motion.div>
                       </motion.div>
                       
                       <div className="flex-1">
-                        <motion.h3
-                          className="text-3xl font-bold text-white mb-3"
-                          animate={{
-                            color: isHovered ? value.color : '#ffffff'
+                        <motion.h3 
+                          className="text-2xl font-bold text-white mb-2"
+                          whileHover={{ 
+                            color: value.color,
+                            scale: 1.05,
+                            textShadow: `0 0 20px ${value.color}60`
                           }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ type: "spring", stiffness: 200 }}
                         >
-                          {value.title}
+                          {value.title.split('').map((char, i) => (
+                            <motion.span
+                              key={i}
+                              className="inline-block"
+                              whileHover={{
+                                y: -8,
+                                rotateZ: Math.random() * 20 - 10,
+                                scale: 1.2
+                              }}
+                              transition={{ delay: i * 0.03 }}
+                            >
+                              {char === ' ' ? '\u00A0' : char}
+                            </motion.span>
+                          ))}
                         </motion.h3>
                         <motion.div 
-                          className={`w-16 h-1 rounded-full bg-gradient-to-r ${value.gradient}`}
-                          animate={{
-                            width: isHovered ? '100%' : '64px'
-                          }}
-                          transition={{ duration: 0.3 }}
-                        />
+                          className={`w-12 h-1 rounded-full bg-gradient-to-r ${value.gradient} relative overflow-hidden`}
+                          whileHover={{ width: "100%", height: "4px" }}
+                          transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                        >
+                          {isHovered && (
+                            <>
+                              <motion.div
+                                className="absolute inset-0 bg-white/50 rounded-full"
+                                animate={{
+                                  x: ["-100%", "100%"]
+                                }}
+                                transition={{
+                                  duration: 1,
+                                  repeat: Infinity,
+                                  ease: "easeInOut"
+                                }}
+                              />
+                              <motion.div
+                                className="absolute inset-0 rounded-full"
+                                style={{ backgroundColor: `${value.color}40` }}
+                                animate={{
+                                  scale: [1, 1.5, 1],
+                                  opacity: [0.5, 0, 0.5]
+                                }}
+                                transition={{
+                                  duration: 1.5,
+                                  repeat: Infinity
+                                }}
+                              />
+                            </>
+                          )}
+                        </motion.div>
                       </div>
                     </div>
 
                     {/* Content */}
-                    <motion.p
-                      className="text-gray-300 leading-relaxed mb-6"
-                      animate={{
-                        opacity: isHovered ? 1 : 0.8
+                    <motion.p 
+                      className="text-gray-300 leading-relaxed mb-4 text-sm"
+                      whileHover={{ 
+                        color: "#f3f4f6",
+                        x: 4
                       }}
+                      transition={{ duration: 0.3 }}
                     >
                       {value.content}
                     </motion.p>
 
-                    {/* Enhanced Progress Indicator */}
+                    {/* Progress Indicator */}
                     <div className="flex items-center gap-3">
-                      <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                      <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden relative">
                         <motion.div
-                          className={`h-full rounded-full bg-gradient-to-r ${value.gradient}`}
+                          className={`h-full rounded-full bg-gradient-to-r ${value.gradient} relative overflow-hidden`}
                           initial={{ width: '0%' }}
                           whileInView={{ width: '100%' }}
                           viewport={{ once: true }}
-                          transition={{ duration: 1.5, delay: index * 0.3 }}
+                          transition={{ 
+                            duration: 1.5, 
+                            delay: index * 0.2,
+                            ease: "easeOut"
+                          }}
+                        >
+                          {/* Shimmer Effect */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                            animate={{
+                              x: ["-100%", "100%"]
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: 1
+                            }}
+                          />
+                          
+                          {/* Pulse Effect */}
+                          <motion.div
+                            className="absolute inset-0 rounded-full"
+                            style={{ backgroundColor: `${value.color}30` }}
+                            animate={{
+                              scale: [1, 1.2, 1],
+                              opacity: [0.3, 0.7, 0.3]
+                            }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              delay: 0.5
+                            }}
+                          />
+                        </motion.div>
+                        
+                        {/* Background Glow */}
+                        <motion.div
+                          className="absolute inset-0 rounded-full blur-sm"
+                          style={{ backgroundColor: `${value.color}20` }}
+                          animate={{
+                            opacity: [0.2, 0.6, 0.2]
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity
+                          }}
                         />
                       </div>
-                      <motion.span
-                        className="text-sm font-bold text-white/60"
-                        animate={{
-                          color: isHovered ? value.color : 'rgba(255,255,255,0.6)'
+                      <motion.span 
+                        className="text-sm font-bold text-white/70 px-2 py-1 rounded-lg border border-white/20"
+                        whileHover={{ 
+                          color: value.color,
+                          scale: 1.1,
+                          borderColor: `${value.color}60`,
+                          backgroundColor: `${value.color}15`
                         }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
                         {String(index + 1).padStart(2, '0')}
                       </motion.span>
                     </div>
                   </div>
 
-
+                  {/* Explosive Particles */}
+                  {isHovered && (
+                    <div className="absolute inset-0 pointer-events-none">
+                      {[...Array(12)].map((_, i) => (
+                        <motion.div
+                          key={i}
+                          className="absolute w-3 h-3 rounded-full"
+                          style={{
+                            backgroundColor: value.color,
+                            left: '50%',
+                            top: '50%'
+                          }}
+                          animate={{
+                            x: Math.cos((i * 30) * Math.PI / 180) * (100 + Math.random() * 100),
+                            y: Math.sin((i * 30) * Math.PI / 180) * (100 + Math.random() * 100),
+                            opacity: [1, 0],
+                            scale: [0, 1.5, 0]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: i * 0.1
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               </motion.div>
             )
@@ -258,62 +433,7 @@ export default function CoreValues() {
         </div>
 
         {/* Enhanced CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-center"
-        >
-          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/20 relative overflow-hidden">
-            {/* Background Glow */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl" />
-            
-            <div className="relative z-10">
-              <motion.h3
-                className="text-4xl font-bold text-white mb-6"
-                animate={{
-                  textShadow: [
-                    '0 0 20px rgba(59,130,246,0.5)',
-                    '0 0 40px rgba(139,92,246,0.5)',
-                    '0 0 20px rgba(59,130,246,0.5)'
-                  ]
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                Ready to Experience These Values?
-              </motion.h3>
-              
-              <p className="text-gray-300 mb-10 max-w-xl mx-auto text-lg">
-                Join thousands of students who have transformed their careers through our value-driven approach.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <motion.button
-                  className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-2xl relative overflow-hidden"
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: '0%' }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <span className="relative z-10">Start Your Journey</span>
-                </motion.button>
-                
-                <motion.button
-                  className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-                  whileHover={{ scale: 1.05, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Learn More
-                </motion.button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   )
