@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, Trophy, Lightbulb, Users } from 'lucide-react'
+import { Heart, Trophy, Lightbulb, Users, Sparkles } from 'lucide-react'
 import { useState } from 'react'
 
 const values = [
@@ -9,334 +9,311 @@ const values = [
     icon: Heart,
     title: 'Student Success First',
     content: 'Your success is our top priority. We help you grow with real projects and career guidance that lead to real results.',
-    color: '#ff1744',
-    spiral: { angle: 0, radius: 180 }
+    color: '#3b82f6',
+    gradient: 'from-blue-500 to-cyan-500'
   },
   {
     icon: Trophy,
     title: 'Industry-Standard Quality',
     content: 'Every project you do follows real-world standards used by leading companies.',
-    color: '#ff9100',
-    spiral: { angle: 90, radius: 180 }
+    color: '#10b981',
+    gradient: 'from-emerald-500 to-green-500'
   },
   {
     icon: Lightbulb,
     title: 'Learn by Building',
     content: 'We provide complete hand-holding through your project journey - from initial setup to final deployment - ensuring you gain both the project and the knowledge.',
-    color: '#2196f3',
-    spiral: { angle: 180, radius: 180 }
+    color: '#f59e0b',
+    gradient: 'from-amber-500 to-yellow-500'
   },
   {
     icon: Users,
     title: 'Mentorship & Support',
     content: 'We offer complete one-on-one guidance for students — ensuring your project is completed and confidently presentable.',
-    color: '#9c27b0',
-    spiral: { angle: 270, radius: 180 }
+    color: '#8b5cf6',
+    gradient: 'from-purple-500 to-pink-500'
   }
 ]
 
 export default function CoreValues() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-32 relative overflow-hidden bg-black">
-      {/* Quantum Field Background */}
+    <section className="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-black relative overflow-hidden">
+      {/* Animated Background Elements */}
       <div className="absolute inset-0">
-        {/* DNA Helix Strands */}
-        <svg className="absolute inset-0 w-full h-full">
-          <defs>
-            <linearGradient id="helixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#ff1744" stopOpacity="0.3" />
-              <stop offset="25%" stopColor="#ff9100" stopOpacity="0.3" />
-              <stop offset="50%" stopColor="#2196f3" stopOpacity="0.3" />
-              <stop offset="75%" stopColor="#9c27b0" stopOpacity="0.3" />
-              <stop offset="100%" stopColor="#ff1744" stopOpacity="0.3" />
-            </linearGradient>
-          </defs>
-          
-          {/* Helix Path 1 */}
-          <motion.path
-            d="M 200 100 Q 400 200 600 100 T 1000 100 T 1400 100"
-            stroke="url(#helixGradient)"
-            strokeWidth="2"
-            fill="none"
-            opacity="0.6"
-            animate={{
-              d: [
-                "M 200 100 Q 400 200 600 100 T 1000 100 T 1400 100",
-                "M 200 200 Q 400 100 600 200 T 1000 200 T 1400 200",
-                "M 200 100 Q 400 200 600 100 T 1000 100 T 1400 100"
-              ]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          
-          {/* Helix Path 2 */}
-          <motion.path
-            d="M 200 200 Q 400 100 600 200 T 1000 200 T 1400 200"
-            stroke="url(#helixGradient)"
-            strokeWidth="2"
-            fill="none"
-            opacity="0.6"
-            animate={{
-              d: [
-                "M 200 200 Q 400 100 600 200 T 1000 200 T 1400 200",
-                "M 200 100 Q 400 200 600 100 T 1000 100 T 1400 100",
-                "M 200 200 Q 400 100 600 200 T 1000 200 T 1400 200"
-              ]
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-        </svg>
-
-        {/* Quantum Particles */}
-        {Array.from({ length: 50 }).map((_, i) => (
+        {/* Floating Orbs */}
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
+            className="absolute rounded-full opacity-20"
             style={{
+              width: `${Math.random() * 200 + 100}px`,
+              height: `${Math.random() * 200 + 100}px`,
               left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
+              top: `${Math.random() * 100}%`,
+              background: `radial-gradient(circle, ${values[i % 4]?.color}40, transparent)`
             }}
             animate={{
-              x: [0, Math.random() * 400 - 200],
-              y: [0, Math.random() * 400 - 200],
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0]
+              x: [0, Math.random() * 100 - 50],
+              y: [0, Math.random() * 100 - 50],
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.3, 0.1]
             }}
             transition={{
-              duration: Math.random() * 10 + 5,
+              duration: Math.random() * 10 + 10,
               repeat: Infinity,
-              delay: Math.random() * 5
+              ease: "easeInOut"
             }}
           />
         ))}
+
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 relative z-10">
-        {/* Header */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Enhanced Header */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.div 
-            className="inline-flex items-center gap-3 mb-6"
-            whileHover={{ scale: 1.05 }}
-          >
-            <span className="text-5xl">💎</span>
-            <h2 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-purple-400 to-cyan-400">
-              Our Core Values
-            </h2>
-          </motion.div>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            The principles that shape your learning journey
-          </p>
-        </motion.div>
-
-        {/* DNA Spiral Layout */}
-        <div className="relative h-[800px] flex items-center justify-center">
-          {/* Central Core */}
           <motion.div
-            className="absolute w-32 h-32 rounded-full border-4 border-white/20 flex items-center justify-center"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="inline-flex items-center gap-3 px-6 py-3 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 mb-8"
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", duration: 1, delay: 0.2 }}
           >
             <motion.div
-              className="w-20 h-20 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.7, 1, 0.7]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity
-              }}
-            />
+              animate={{ rotate: 360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-5 h-5 text-yellow-400" />
+            </motion.div>
+            <span className="text-white font-medium">Our Foundation</span>
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-5 h-5 text-yellow-400" />
+            </motion.div>
           </motion.div>
+          
+          <motion.h2
+            className="text-6xl md:text-7xl font-black text-white mb-6"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            Core{' '}
+            <motion.span 
+              className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
+              animate={{ 
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{ duration: 5, repeat: Infinity }}
+            >
+              Values
+            </motion.span>
+          </motion.h2>
+          
+          <motion.p
+            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            The principles that drive our commitment to excellence and student success
+          </motion.p>
+        </motion.div>
 
-          {/* Spiral Value Cards */}
+        {/* Enhanced Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
           {values.map((value, index) => {
             const IconComponent = value.icon
-            const spiralX = Math.cos((value.spiral.angle * Math.PI) / 180) * value.spiral.radius
-            const spiralY = Math.sin((value.spiral.angle * Math.PI) / 180) * value.spiral.radius
-            
+            const isHovered = hoveredIndex === index
+
             return (
               <motion.div
                 key={index}
-                className="absolute cursor-pointer"
-                style={{
-                  left: '50%',
-                  top: '50%',
-                  transform: `translate(${spiralX}px, ${spiralY}px)`
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                className="group relative"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.3, duration: 0.8 }}
-                onMouseEnter={() => setActiveIndex(index)}
-                onMouseLeave={() => setActiveIndex(null)}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
               >
-                {/* Quantum Bubble */}
                 <motion.div
-                  className="relative w-64 h-80 p-6 backdrop-blur-xl border border-white/10 overflow-hidden"
-                  style={{
-                    background: `radial-gradient(circle at center, ${value.color}20 0%, transparent 70%)`,
-                    borderRadius: '50% 20% 50% 20%'
-                  }}
+                  className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 h-full relative overflow-hidden"
                   animate={{
-                    borderRadius: [
-                      '50% 20% 50% 20%',
-                      '20% 50% 20% 50%',
-                      '40% 30% 60% 10%',
-                      '50% 20% 50% 20%'
-                    ],
-                    rotate: activeIndex === index ? 360 : 0
+                    scale: isHovered ? 1.05 : 1,
+                    y: isHovered ? -5 : 0
                   }}
-                  transition={{
-                    borderRadius: { duration: 6, repeat: Infinity },
-                    rotate: { duration: 2 }
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    y: -20
-                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
-                  {/* Energy Field */}
+                  {/* Simple Gradient Overlay */}
                   <motion.div
-                    className="absolute inset-0 border-2 opacity-0"
+                    className="absolute inset-0 rounded-3xl"
                     style={{
-                      borderColor: value.color,
-                      borderRadius: 'inherit',
-                      boxShadow: `0 0 30px ${value.color}60`
+                      background: `linear-gradient(135deg, ${value.color}15 0%, transparent 70%)`
                     }}
                     animate={{
-                      opacity: activeIndex === index ? 1 : 0,
-                      scale: activeIndex === index ? [1, 1.1, 1] : 1
+                      opacity: isHovered ? 1 : 0
                     }}
-                    transition={{ duration: 1, repeat: activeIndex === index ? Infinity : 0 }}
+                    transition={{ duration: 0.3 }}
                   />
-
-                  {/* Quantum Dots */}
-                  {activeIndex === index && (
-                    <>
-                      {Array.from({ length: 8 }).map((_, i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute w-2 h-2 rounded-full"
-                          style={{ backgroundColor: value.color }}
-                          initial={{
-                            x: 120,
-                            y: 160,
-                            opacity: 0
-                          }}
-                          animate={{
-                            x: 120 + Math.cos((i * 45 * Math.PI) / 180) * 80,
-                            y: 160 + Math.sin((i * 45 * Math.PI) / 180) * 80,
-                            opacity: [0, 1, 0]
-                          }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: i * 0.2
-                          }}
-                        />
-                      ))}
-                    </>
-                  )}
+                  {/* Border Glow */}
+                  <motion.div
+                    className="absolute inset-0 rounded-3xl border"
+                    style={{ borderColor: value.color }}
+                    animate={{
+                      opacity: isHovered ? 0.6 : 0
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
 
                   {/* Content */}
-                  <div className="relative z-10 h-full flex flex-col justify-center text-center">
-                    {/* Floating Icon */}
-                    <motion.div
-                      className="mb-6"
-                      animate={{
-                        y: [-5, 5, -5],
-                        rotateY: activeIndex === index ? 360 : 0
-                      }}
-                      transition={{
-                        y: { duration: 2, repeat: Infinity },
-                        rotateY: { duration: 1.5 }
-                      }}
-                    >
-                      <div 
-                        className="w-16 h-16 mx-auto rounded-full flex items-center justify-center relative"
-                        style={{
-                          background: `linear-gradient(45deg, ${value.color}40, ${value.color}20)`,
-                          border: `2px solid ${value.color}`,
-                          boxShadow: `0 0 20px ${value.color}60`
+                  <div className="relative z-10">
+                    {/* Icon & Title Row */}
+                    <div className="flex items-start gap-6 mb-6">
+                      <motion.div
+                        className="relative flex-shrink-0 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg"
+                        style={{ backgroundColor: `${value.color}20` }}
+                        animate={{
+                          scale: isHovered ? 1.1 : 1
                         }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <IconComponent className="w-8 h-8 text-white" />
+                        <IconComponent 
+                          className="w-10 h-10" 
+                          style={{ color: value.color }}
+                        />
                         
-                        {/* Orbital Ring */}
-                        <motion.div
-                          className="absolute inset-0 rounded-full border border-white/30"
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+
+                      </motion.div>
+                      
+                      <div className="flex-1">
+                        <motion.h3
+                          className="text-3xl font-bold text-white mb-3"
+                          animate={{
+                            color: isHovered ? value.color : '#ffffff'
+                          }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {value.title}
+                        </motion.h3>
+                        <motion.div 
+                          className={`w-16 h-1 rounded-full bg-gradient-to-r ${value.gradient}`}
+                          animate={{
+                            width: isHovered ? '100%' : '64px'
+                          }}
+                          transition={{ duration: 0.3 }}
                         />
                       </div>
-                    </motion.div>
+                    </div>
 
-                    <h3 
-                      className="text-xl font-bold text-white mb-4"
-                      style={{
-                        textShadow: `0 0 10px ${value.color}80`
+                    {/* Content */}
+                    <motion.p
+                      className="text-gray-300 leading-relaxed mb-6"
+                      animate={{
+                        opacity: isHovered ? 1 : 0.8
                       }}
                     >
-                      {value.title}
-                    </h3>
-                    
-                    <p className="text-gray-300 text-sm leading-relaxed">
                       {value.content}
-                    </p>
+                    </motion.p>
+
+                    {/* Enhanced Progress Indicator */}
+                    <div className="flex items-center gap-3">
+                      <div className="flex-1 h-2 bg-white/10 rounded-full overflow-hidden">
+                        <motion.div
+                          className={`h-full rounded-full bg-gradient-to-r ${value.gradient}`}
+                          initial={{ width: '0%' }}
+                          whileInView={{ width: '100%' }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 1.5, delay: index * 0.3 }}
+                        />
+                      </div>
+                      <motion.span
+                        className="text-sm font-bold text-white/60"
+                        animate={{
+                          color: isHovered ? value.color : 'rgba(255,255,255,0.6)'
+                        }}
+                      >
+                        {String(index + 1).padStart(2, '0')}
+                      </motion.span>
+                    </div>
                   </div>
 
-                  {/* Plasma Effect */}
-                  <motion.div
-                    className="absolute inset-0 opacity-0 pointer-events-none"
-                    style={{
-                      background: `conic-gradient(from 0deg, transparent, ${value.color}40, transparent, ${value.color}20, transparent)`,
-                      borderRadius: 'inherit'
-                    }}
-                    animate={{
-                      opacity: activeIndex === index ? 0.6 : 0,
-                      rotate: 360
-                    }}
-                    transition={{
-                      opacity: { duration: 0.3 },
-                      rotate: { duration: 3, repeat: Infinity, ease: "linear" }
-                    }}
-                  />
-                </motion.div>
 
-                {/* Connection Line to Center */}
-                <motion.div
-                  className="absolute w-0.5 bg-gradient-to-r from-transparent via-white to-transparent opacity-30"
-                  style={{
-                    height: value.spiral.radius,
-                    left: '50%',
-                    top: '50%',
-                    transformOrigin: '0 0',
-                    transform: `rotate(${value.spiral.angle + 180}deg)`
-                  }}
-                  animate={{
-                    opacity: activeIndex === index ? 0.8 : 0.2
-                  }}
-                />
+                </motion.div>
               </motion.div>
             )
           })}
         </div>
+
+        {/* Enhanced CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center"
+        >
+          <div className="bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/20 relative overflow-hidden">
+            {/* Background Glow */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 blur-3xl" />
+            
+            <div className="relative z-10">
+              <motion.h3
+                className="text-4xl font-bold text-white mb-6"
+                animate={{
+                  textShadow: [
+                    '0 0 20px rgba(59,130,246,0.5)',
+                    '0 0 40px rgba(139,92,246,0.5)',
+                    '0 0 20px rgba(59,130,246,0.5)'
+                  ]
+                }}
+                transition={{ duration: 3, repeat: Infinity }}
+              >
+                Ready to Experience These Values?
+              </motion.h3>
+              
+              <p className="text-gray-300 mb-10 max-w-xl mx-auto text-lg">
+                Join thousands of students who have transformed their careers through our value-driven approach.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <motion.button
+                  className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-2xl shadow-2xl relative overflow-hidden"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: '0%' }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <span className="relative z-10">Start Your Journey</span>
+                </motion.button>
+                
+                <motion.button
+                  className="px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Learn More
+                </motion.button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
