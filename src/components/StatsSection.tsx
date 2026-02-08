@@ -337,7 +337,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Rocket, GraduationCap, Briefcase, Building, Zap } from 'lucide-react'
+import { Rocket, GraduationCap, Briefcase, Building, Zap, Star } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const stats = [
@@ -457,35 +457,56 @@ export default function StatsSection() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Epic Title */}
+       
+
         <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.h2 
-            className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-6"
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity
-            }}
+          <motion.div
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl rounded-full border border-white/20 mb-8"
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", duration: 0.8, delay: 0.2 }}
           >
-            LEGENDARY STATS
+            <Star className="w-4 h-4 text-yellow-400" />
+            <span className="text-white font-medium">Premium Services</span>
+            <Star className="w-4 h-4 text-yellow-400" />
+          </motion.div>
+
+          <motion.h2
+            className="text-5xl md:text-6xl font-black mb-8"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <motion.span 
+              className="text-white"
+              animate={{ 
+                textShadow: [
+                  '0 0 20px rgba(255,255,255,0.5)',
+                  '0 0 40px rgba(120,119,198,0.8)',
+                  '0 0 20px rgba(255,255,255,0.5)'
+                ]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+             LEGENDARY {" "}
+            </motion.span>
+            <motion.span 
+              className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
+              animate={{ 
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{ duration: 5, repeat: Infinity }}
+            >
+              STATS
+            </motion.span>
           </motion.h2>
-          <motion.div 
-            className="w-40 h-2 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto rounded-full"
-            animate={{
-              scaleX: [1, 1.2, 1],
-              opacity: [0.7, 1, 0.7]
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity
-            }}
-          />
         </motion.div>
 
         {/* Ultra Stats Grid */}

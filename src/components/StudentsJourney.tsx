@@ -187,19 +187,35 @@ export default function StudentsJourney() {
             <span className="text-sm font-bold text-white">Journey of Innovation</span>
           </motion.div>
           
-          <motion.h2 
-            className="text-xl md:text-5xl font-black text-white mb-8 relative"
-            animate={{
-              textShadow: [
-                "0 0 20px rgba(59,130,246,0.5)",
-                "0 0 40px rgba(139,92,246,0.7)",
-                "0 0 20px rgba(16,185,129,0.5)",
-                "0 0 20px rgba(59,130,246,0.5)"
-              ]
-            }}
-            transition={{ duration: 3, repeat: Infinity }}
+          <motion.h2
+            className="text-5xl md:text-6xl font-black mb-8"
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
           >
-            Students Journey
+            <motion.span 
+              className="text-white"
+              animate={{ 
+                textShadow: [
+                  '0 0 20px rgba(255,255,255,0.5)',
+                  '0 0 40px rgba(120,119,198,0.8)',
+                  '0 0 20px rgba(255,255,255,0.5)'
+                ]
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+            >
+              Students{' '}
+            </motion.span>
+            <motion.span 
+              className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
+              animate={{ 
+                backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+              }}
+              transition={{ duration: 5, repeat: Infinity }}
+            >
+              Journey
+            </motion.span>
           </motion.h2>
         </motion.div>
 
@@ -210,7 +226,7 @@ export default function StudentsJourney() {
           viewport={{ once: true }}
           className="mb-32"
         >
-          <h3 className="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+          <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-16">
             From Students to Industry Experts
           </h3>
           
@@ -338,7 +354,7 @@ export default function StudentsJourney() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h3 className="text-6xl font-bold text-white text-center mb-16">
+          <h3 className="text-5xl font-bold text-white text-center mb-16">
             Why Choose Tech Stack?
           </h3>
 

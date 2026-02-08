@@ -99,14 +99,14 @@ export default function ServicesSection() {
           </motion.div>
 
           <motion.h2
-            className="text-7xl md:text-9xl font-black mb-8"
+            className="text-5xl md:text-6xl font-black mb-8"
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
           >
             <motion.span 
-              className="block text-white"
+              className="text-white"
               animate={{ 
                 textShadow: [
                   '0 0 20px rgba(255,255,255,0.5)',
@@ -116,16 +116,16 @@ export default function ServicesSection() {
               }}
               transition={{ duration: 3, repeat: Infinity }}
             >
-              CRAFT
+              Craft{' '}
             </motion.span>
             <motion.span 
-              className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
+              className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 text-transparent bg-clip-text"
               animate={{ 
                 backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
               }}
               transition={{ duration: 5, repeat: Infinity }}
             >
-              DIGITAL
+              Digital
             </motion.span>
           </motion.h2>
         </motion.div>
